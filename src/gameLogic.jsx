@@ -5,7 +5,7 @@ const WINNING_COMBINATIONS = [
 ];
 
 
-function checkWinnerLogic(board){
+export function checkWinnerLogic(board){
 
   for(let combo of WINNING_COMBINATIONS){
     const [a,b,c]=combo
