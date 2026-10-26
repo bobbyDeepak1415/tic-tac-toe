@@ -1,4 +1,3 @@
-// Winning combinations for a 3x3 board (indices 0 to 8)
 const WINNING_COMBINATIONS = [
   [0, 1, 2], [3, 4, 5], [6, 7, 8], 
   [0, 3, 6], [1, 4, 7], [2, 5, 8], 
@@ -59,7 +58,6 @@ export function getComputerMove(board) {
     return corners[Math.floor(Math.random() * corners.length)];
   }
 
-  // Priority 5: Take any remaining available cell
   return emptyIndices[Math.floor(Math.random() * emptyIndices.length)];
 }
 
