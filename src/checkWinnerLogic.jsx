@@ -24,3 +24,42 @@ function checkWinnerLogic(board){
 export function checkDraw(board){
 return board.every(cell=>cell!==null) &&!checkWinnerLogic(board).winner
 }
+
+
+export function getComputerMove(board) {
+  const emptyIndices = board
+    .map((val, idx) => (val === null ? idx : null))
+    .filter(val => val !== null);
+
+  if (emptyIndices.length === 0) return null;
+
+  for (let idx of emptyIndices) {
+    const tempBoard = [...board];
+    tempBoard[idx] = 'O';
+    if (checkWinner(tempBoard).winner === 'O') {
+      return idx;
+    }
+  }
+
+  for (let idx of emptyIndices) {
+    const tempBoard = [...board];
+    tempBoard[idx] = 'X';
+    if (checkWinner(tempBoard).winner === 'X') {
+      return idx;
+    }
+  }
+
+
+  if (board[4] === null) {
+    return 4;
+  }
+
+  const corners = [0, 2, 6, 8].filter(idx => board[idx] === null);
+  if (corners.length > 0) {
+    return corners[Math.floor(Math.random() * corners.length)];
+  }
+
+  // Priority 5: Take any remaining available cell
+  return emptyIndices[Math.floor(Math.random() * emptyIndices.length)];
+}
+
