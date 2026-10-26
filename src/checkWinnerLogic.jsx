@@ -35,7 +35,7 @@ export function getComputerMove(board) {
   for (let idx of emptyIndices) {
     const tempBoard = [...board];
     tempBoard[idx] = 'O';
-    if (checkWinner(tempBoard).winner === 'O') {
+    if (checkWinnerLogic(tempBoard).winner === 'O') {
       return idx;
     }
   }
@@ -43,7 +43,7 @@ export function getComputerMove(board) {
   for (let idx of emptyIndices) {
     const tempBoard = [...board];
     tempBoard[idx] = 'X';
-    if (checkWinner(tempBoard).winner === 'X') {
+    if (checkWinnerLogic(tempBoard).winner === 'X') {
       return idx;
     }
   }
